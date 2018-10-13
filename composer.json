@@ -20,7 +20,9 @@
         "zendframework/zend-log": "^2.9",
         "zendframework/zend-console": "^2.7",
         "zendframework/zend-mvc-console": "^1.2",
-        "aws/aws-sdk-php": "^3.69"
+        "aws/aws-sdk-php": "^3.69",
+        "zendframework/zend-db": "^2.9",
+        "zendframework/zend-hydrator": "^2.4"
     },
     "autoload": {
         "psr-4": {
