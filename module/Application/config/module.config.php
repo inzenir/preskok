@@ -7,6 +7,8 @@
 
 namespace Application;
 
+use Application\Controller\Basic1;
+use Application\Controller\Basic2;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
@@ -39,21 +41,21 @@ return [
 	'console' => [
 		'router' => [
 			'routes' => [
-				'preskok-test' => [
-					'options' => [
-						'route' => 'preskok',
-						'defaults' => [
-							'controller' => 'Application\Controller\Basic1',
-							'action' => 'syncAWS3'
-						]
-					]
-				],
 				'preskok-basic-1' => [
 					'options' => [
 						'route' => 'preskok syncaws3 [--verbose|-v] <directory>',
 						'defaults' => [
-							'controller' => 'Application\Controller\Basic1',
+							'controller' => Basic1::class,
 							'action' => 'syncAWS3'
+						]
+					]
+				],
+				'preskok-basic-2' => [
+					'options' => [
+						'route' => 'preskok syncsql [--verbose|-v] <directory>',
+						'defaults' => [
+							'controller' => Basic2::class,
+							'action' => 'syncSQL'
 						]
 					]
 				]
@@ -63,7 +65,8 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
-			Controller\Basic1::class => InvokableFactory::class
+			Controller\Basic1::class => InvokableFactory::class,
+			Controller\Basic2::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

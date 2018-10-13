@@ -31,13 +31,13 @@ class ConsoleResponseBuilder
 	 */
 	public function appendMessage($message)
 	{
-		$this->response .= PHP_EOL . $message;
+		$this->response .= $message.PHP_EOL;
 	}
 	
 	/**
 	 * @name ->appendVerbose()
 	 *
-	 * @param bool $verbose
+	 * @param bool   $verbose
 	 * @param string $message
 	 */
 	public function appendVerbose($verbose, $message)
@@ -64,6 +64,6 @@ class ConsoleResponseBuilder
 	 */
 	public function getMessages()
 	{
-		return $this->response.PHP_EOL;
+		return $this->response;
 	}
 }
