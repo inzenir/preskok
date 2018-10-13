@@ -9,6 +9,7 @@ namespace Application;
 
 use Application\Controller\Basic1;
 use Application\Controller\Basic2;
+use Application\Controller\Practical;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
@@ -58,6 +59,24 @@ return [
 							'action' => 'syncSQL'
 						]
 					]
+				],
+				'preskok-practical-parser' => [
+					'options' => [
+						'route' => 'preskok practical [--verbose|-v] parser',
+						'defaults' => [
+							'controller' => Practical::class,
+							'action' => 'parser'
+						]
+					]
+				],
+				'preskok-practical-dbcheck' => [
+					'options' => [
+						'route' => 'preskok practical [--verbose|-v] dbcheck',
+						'defaults' => [
+							'controller' => Practical::class,
+							'action' => 'dbCheck'
+						]
+					]
 				]
 			]
 		]
@@ -67,6 +86,7 @@ return [
             Controller\IndexController::class => InvokableFactory::class,
 			Controller\Basic1::class => InvokableFactory::class,
 			Controller\Basic2::class => InvokableFactory::class,
+			Controller\Practical::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

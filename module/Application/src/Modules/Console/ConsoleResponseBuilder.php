@@ -14,6 +14,9 @@ class ConsoleResponseBuilder
 	/** @var string */
 	private $response = "";
 	
+	/** @var bool  */
+	private $verboseMode = false;
+	
 	/**
 	 * ConsoleResponseBuilder constructor.
 	 *
@@ -49,6 +52,16 @@ class ConsoleResponseBuilder
 	}
 	
 	/**
+	 * @name ->appendVerboseDefault()
+	 *
+	 * @param string $message
+	 */
+	public function appendVerboseDefault($message)
+	{
+		$this->appendVerbose($this->verboseMode, $message);
+	}
+	
+	/**
 	 * @name ->deleteMessages()
 	 *
 	 */
@@ -65,5 +78,17 @@ class ConsoleResponseBuilder
 	public function getMessages()
 	{
 		return $this->response;
+	}
+	
+	/**
+	 * @param bool $verboseMode
+	 *
+	 * @return ConsoleResponseBuilder
+	 */
+	public function setVerboseMode($verboseMode)
+	{
+		$this->verboseMode = $verboseMode;
+		
+		return $this;
 	}
 }
