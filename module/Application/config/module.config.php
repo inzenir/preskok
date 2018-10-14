@@ -77,6 +77,42 @@ return [
 							'action' => 'dbCheck'
 						]
 					]
+				],
+				'preskok-practical-populateBuyers' => [
+					'options' => [
+						'route' => 'preskok practical [--verbose|-v] populatebuyers',
+						'defaults' => [
+							'controller' => Practical::class,
+							'action' => 'populateBuyersTable'
+						]
+					]
+				],
+				'preskok-practical-findBestSellingModel' => [
+					'options' => [
+						'route' => 'preskok practical [--verbose|-v] model [<userId>]',
+						'defaults' => [
+							'controller' => Practical::class,
+							'action' => 'bestSellingModel'
+						]
+					]
+				],
+				'preskok-practical-findBestSellingModelInRow' => [
+					'options' => [
+						'route' => 'preskok practical [--verbose|-v] bestseller',
+						'defaults' => [
+							'controller' => Practical::class,
+							'action' => 'bestSellerInRow'
+						]
+					]
+				],
+				'preskok-practical-addRecord' => [
+					'options' => [
+						'route' => 'preskok practical [--verbose|-v] addsale <VehicleID> <InhouseSellerID> <BuyerID> <ModelID> <SaleDate> <BuyDate>',
+						'defaults' => [
+							'controller' => Practical::class,
+							'action' => 'addSale'
+						]
+					]
 				]
 			]
 		]

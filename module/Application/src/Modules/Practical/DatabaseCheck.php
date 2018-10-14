@@ -32,7 +32,7 @@ class DatabaseCheck implements AcceptsConsoleResponseBuilderInterface
 	 *
 	 * @return boolean
 	 */
-	public function checkDB()
+	public function checkDB($tableName = 'sales_info')
 	{
 		$tables = iterator_to_array($this->adapter->query(
 			"SHOW TABLES;",
@@ -43,9 +43,10 @@ class DatabaseCheck implements AcceptsConsoleResponseBuilderInterface
 		
 		foreach($tables as $table)
 		{
-			$value = array_pop(json_decode(json_encode($table), true));
+			$temp = json_decode(json_encode($table), true);
+			$value = array_pop($temp);
 			
-			if($value === 'preskok')
+			if($value === $tableName)
 			{
 				$exists = true;
 				break;
@@ -55,9 +56,38 @@ class DatabaseCheck implements AcceptsConsoleResponseBuilderInterface
 		return $exists;
 	}
 	
-	public function createDB()
+	/**
+	 * @name ->createDB()
+	 * Attempts to create table `sales_info`
+	 */
+	public function createDBSalesInfo()
 	{
+		$query = "CREATE TABLE IF NOT EXISTS `preskok`.`sales_info` (
+					`sales_info_id` INT NOT NULL AUTO_INCREMENT ,
+					`vehicle_id` INT NOT NULL ,
+					`inhouse_seller_id` INT NOT NULL ,
+					`buyer_id` INT NOT NULL ,
+					`model_id` INT NOT NULL ,
+					`sale_date` DATE NOT NULL ,
+					`buy_date` DATE NOT NULL ,
+					PRIMARY KEY (`sales_info_id`))";
+		
+		$this->adapter->query($query, Adapter::QUERY_MODE_EXECUTE);
+	}
 	
+	/**
+	 * @name ->createDBBuyer()
+	 * Attempts to create table `buyer_info`
+	 */
+	public function createDBBuyer()
+	{
+		$query = "CREATE TABLE `preskok`.`buyer_info` (
+			`buyer_id` INT NOT NULL ,
+			`first_name` TEXT NOT NULL ,
+			`last_name` TEXT NOT NULL ,
+			PRIMARY KEY (`buyer_id`))";
+		
+		$this->adapter->query($query, Adapter::QUERY_MODE_EXECUTE);
 	}
 	
 	/**
