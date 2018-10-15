@@ -20,10 +20,10 @@ use Aws\S3\S3Client;
 class Aws3Communication
 {
 	/** @var string */
-	private static $access_key = "AKIAISRXPDMH6DAD6HTQ";
+	private static $access_key = "";	// access key goes here
 	
 	/** @var string */
-	private static $access_secret = "lBWtVSwIEvcXxpyvcInU3RNYtMKCNPME1Qowm6Z8";
+	private static $access_secret = "";	// access secret goes here
 	
 	/** @var  S3Client */
 	private static $client = null;
